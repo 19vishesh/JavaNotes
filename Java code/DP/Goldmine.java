@@ -1,3 +1,5 @@
+// https://www.pepcoding.com/resources/online-java-foundation/dynamic-programming-and-greedy/goldmine-official/ojquestion
+
 import java.util.Scanner;
 
 public class Goldmine {
