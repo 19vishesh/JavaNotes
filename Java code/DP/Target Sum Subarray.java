@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-// Check subArray and subSet of array
+// Check difference b/w subArray and subSet of array
 // ex : arr[]{1,2,3,4,5}
 //subarray = 1,2,3 OR 4,5  any continuous
 // subset = 1,4,2 OR 1,3,5 any random
