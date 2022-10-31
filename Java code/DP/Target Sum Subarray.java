@@ -31,7 +31,7 @@ class TargetSumSubarray{
                     if(dp[i-1][j]==true){
                         dp[i][j] = true;
                     }else{
-                        int val = arr[i-1];         // var if array element
+                        int val = arr[i-1];         // var is array element
                         if(j >= val){
                             if(dp[i-1][j-val] == true)
                                 dp[i][j] = true;
