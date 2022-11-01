@@ -1,14 +1,14 @@
-import java.util.Scanner;
-
 // https://www.pepcoding.com/resources/online-java-foundation/dynamic-programming-and-greedy/zero-one-knapsack-official/ojquestion
+
+import java.util.Scanner;
 
 public class KnapsackZeroOne {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         
-        int[] vals = new int[n];
-        int[] wts = new int[n];
+        int[] vals = new int[n];        // values
+        int[] wts = new int[n];         // weights
         for (int i = 0; i < vals.length; i++) 
             vals[i] = sc.nextInt();
         for (int i = 0; i < wts.length; i++) 
