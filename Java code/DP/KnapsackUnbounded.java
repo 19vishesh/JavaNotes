@@ -34,7 +34,6 @@ public class KnapsackUnbounded {
                     if(totalBagv > max)
                         max = totalBagv;
                 }
-
             }
             dp[bagc] = max;
         }
