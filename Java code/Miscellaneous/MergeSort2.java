@@ -3,24 +3,24 @@ import java.util.*;
 
 public class MergeSort2 {
     public static void main(String[] args) {
-        int[] a = {1,5,89,1,5,5,55,8,66,4};
+        int[] a = {5,4,3,2,1};
         
-        mergesort(a);
-        // System.out.println(Arrays.toString(a));
+        a = mergesort(a);
+        System.out.println(Arrays.toString(a));
     
     }
-    static int[] mergesort(int[] a) {
+    public static int[] mergesort(int[] a) {
         if(a.length==1){
             return a;
         } 
         int mid = a.length/2;
 
         int[] left = mergesort(Arrays.copyOfRange(a,0,mid));
-        int[] right = mergesort(Arrays.copyOfRange(a,mid+1,a.length));
+        int[] right = mergesort(Arrays.copyOfRange(a,mid,a.length));
         return merge(left, right);
 
     }
-    static int[] merge(int[] left, int[] right) {
+    public static int[] merge(int[] left, int[] right) {
         int i=0, j=0, k=0;
         int[] res = new int[left.length+right.length];
 
