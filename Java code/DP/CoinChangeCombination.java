@@ -14,7 +14,7 @@ public class CoinChangeCombination {
         int amt = sc.nextInt();
         int dp[] = new int[amt+1];
         dp[0] = 1;      //Storing 1 at first index for zero(na dena, na lena)
-        for(int i=0; i<arr.length; i++){            // taking coin at outer loop toavoid permutation
+        for(int i=0; i<arr.length; i++){            // taking coin at outer loop to avoid permutation
             for(int j=arr[i]; j<dp.length; j++){
                 dp[j] = dp[j] + dp[j - arr[i]];
             }
