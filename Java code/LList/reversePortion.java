@@ -1,82 +1,82 @@
-class Node
+public class reversePortion
 {
-    int data;
-    Node next;
- 
-    Node(int data, Node next)
-    {
-        this.data = data;
-        this.next = next;
-    }
-}
- 
-class reversePortion
-{
-    public static void printList(String msg, Node head)
-    {
-        System.out.print(msg);
- 
-        Node ptr = head;
-        while (ptr != null)
-        {
-            System.out.print(ptr.data + " —> ");
-            ptr = ptr.next;
+    static Node head;
+    class Node{
+        int data;
+        Node next;
+        public Node(int data){
+            this.data = data;
         }
- 
-        System.out.println("null");
     }
- 
-    
-    public static Node reverse(Node head, int m, int n)
-    {
-        if (m > n) {
-            return head;
+    public void add(int data){
+        Node newNode = new Node(data);
+        if(head==null){
+            head = newNode;
+            return;
         }
- 
+        Node endNode = head;
+        while(endNode.next!=null){
+            endNode = endNode.next;
+        }
+        endNode.next = newNode;
+    }
+
+    public void show(){
+        if(head==null) return;
+
+        Node curr = head;
+        while(curr!=null){
+            System.out.print(curr.data+" -> ");
+            curr = curr.next;
+        }
+        System.out.println("NULL");
+    }
+
+    public Node reverse(Node head, int m, int n){
+        
         Node prev = null;
         Node curr = head;
- 
-        for (int i = 1; curr != null && i < m; i++)
-        {
+
+        int i;
+        for(i = 1; i < m && curr != null; i++){
             prev = curr;
             curr = curr.next;
         }
 
-        Node start = curr;
-        Node end = null;
+        Node rtail = curr;   // this is going to be tail of the reversed LL
+        Node rhead = null;    // this will be head of the reversed LL
 
-        for (int i = 1; curr != null && i <= n - m + 1; i++)
-        {
+        while(i++ <= n){
             Node temp = curr.next;
-            curr.next = end;
-            end = curr;
+            curr.next = rhead;
+            rhead = curr;
             curr = temp;
         }
-        if (start != null)
-        {
-            start.next = curr;
-            if (prev != null) {
-                prev.next = end;
-            }
-            else {
-                head = end;  
-            }
-        }
- 
+
+        // Now we rtail having no connections to remaining node list
+        // and remaining node list head is present in curr no, (from line 55)
+
+        if(prev != null)    // for checking if there is any list available before m
+            prev.next = rhead;
+        else
+            head = rhead;
+
+        // now connect the node list after n position that curr having head of that list
+        rtail.next = curr;
+
         return head;
     }
- 
-    public static void main(String[] args)
-    {
-        int m = 2, n = 5;
- 
-        Node head = null;
-        for (int i = 7; i >= 1; i--) {
-            head = new Node(i, head);
+
+    public static void main(String[] args) {
+        reversePortion list = new reversePortion();
+        int arr[] = {1,2,3,4,5,6,7,8,9};
+
+        for (int i = 0; i < arr.length; i++) {
+            list.add(arr[i]);
         }
- 
-        printList("Original linked list: ", head);
-        head = reverse(head, m, n);
-        printList("Reversed linked list: ", head);
+        
+        list.show();
+        list.reverse(head, 2,5);
+        list.show();
     }
 }
